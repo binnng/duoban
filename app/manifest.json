@@ -15,7 +15,8 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://laopopo.duapp.com/"
+    "http://laopopo.duapp.com/",
+    "https://*.douban.com/"
   ],
   "content_scripts": [
     {
