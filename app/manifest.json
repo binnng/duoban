@@ -1,0 +1,27 @@
+
+{  
+  "name": "多瓣",  
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "方便快速地从多看上链接到豆瓣，已查看豆瓣书评笔记等。",
+  "icons": {
+  	"16": "icon16.png",
+  	"48": "icon48.png",
+  	"128": "icon128.png"
+  }, 
+  "browser_action": {  
+    "default_icon": "icon16.png" ,
+    "default_title": "多瓣",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://laopopo.duapp.com/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://www.duokan.com/*"],
+      "css": ["static/duoban.css"],
+      "js": ["static/jquery.js", "static/duoban.js"]
+    }
+  ]
+}

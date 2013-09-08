@@ -1,0 +1,46 @@
+a{
+	text-decoration: none;
+}
+.duoban-popup{
+	font-size: 1em;
+}
+
+.duoban-popup{
+	width: 100px;
+	padding: 1em;
+}
+
+.duoban-popup .logo{
+	display: block;
+	height: 32px;
+	background: url(logo.png) no-repeat;
+	margin-bottom: 1em;
+	text-indent: 40px;
+	line-height: 32px;
+	font-size: 1.4em;
+	color: #ed6c00;
+}
+
+.duoban-popup .home{
+	color: #333;
+	font-size: .9em;
+}
+.duoban-popup .home:hover{
+	color: #000;
+}
+
+.duoban-sec{
+	margin: 10px 0;
+	padding-bottom: 24px;
+}
+.duoban-sec .itm{
+	width: 4em;
+}
+.duoban-sec .cnt{
+	padding: 20px 0;
+}
+.duoban-sec .cnt a{
+	display: inline-block;
+	font-size: 14px;
+	margin: 0 10px;
+}
