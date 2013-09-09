@@ -1,50 +1,85 @@
-(function(win) {
+(function() {
 	var isbn = $('.data .isbn').text().replace(/-/g, ''),
-		$com = $('.j-comment'),
-		$cnt = $('.m-bookdata .cnt'),
+		$body = $('body'),
 		id,
 		rating,
 
 		html = [
 			'<div class="duoban-sec">',
-			'<div class="w-tab">',
-			'<div class="tab">',
-			'<ul><li class="itm crt"><a href="javascript:void(0)" class="crt">多瓣</a></li></ul>',
-			'<div class="arr arr1 j-target" style="left: 22.5px;"></div>',
-			'</div>',
-			'<div class="cnt">',
-			'<a href="http://book.douban.com/subject/{id}/" target="_blank">去豆瓣</a>',
-			'<a href="http://book.douban.com/subject/{id}/reviews" target="_blank">看豆瓣书评</a>',
-			'<a href="http://book.douban.com/subject/{id}/annotation" target="_blank">看豆瓣笔记</a>',
-			'</div>',
-			'</div>',
+				'<p class="logo">多瓣</p>',
+				'<div class="cnt">',
+					'<img src="{image}" />',
+					'<ul class="info">',
+					  	'<li class="title">{title}</li>',
+					  	'<li class="author">{author}</li>',
+					  	'<li class="pub">{publisher}</li>',
+					  	'<li class="date">{pubdate}</li>',
+					  	'<li class="book_rating small">',
+					  		'<span class="star"><b style="width: {width}%"></b></span><u>{rating}分</u>',
+					  	'</li>',
+					'</ul>',
+					'<div class="link">',
+						'<a href="http://book.douban.com/subject/{id}/" target="_blank">豆瓣</a>',
+						'<a href="http://book.douban.com/subject/{id}/reviews" target="_blank">豆瓣书评</a>',
+						'<a href="http://book.douban.com/subject/{id}/annotation" target="_blank">豆瓣笔记</a>',
+					'</div>',
+					'<i class="close">关闭</i>',
+				'</div>',
 			'</div>'
-		],
-
-		r_html = [
-			'<div class="w-starfive"><ul class="five">',
-			'{stars}',
-			'</ul><em itemprop="ratingValue">{rating}</em>',
-			'<span class="num">( 来自多瓣 )</span></div>'
 		];
+
+	if (!id) return false;
 
 	$.getJSON('https://api.douban.com/v2/book/isbn/' + isbn, function(data) {
 		id = data['id'];
 		rating = data['rating']['average'];
 
-		$(html.join('').replace(/\{id\}/g, id)).insertBefore($com);
+		html = html.join('').replace(/\{id\}/g, id)
+			.replace('{title}', data.title)
+			.replace('{image}', data.image)
+			.replace('{title}', data.title)
+			.replace('{author}', data.author[0])
+			.replace('{pubdate}', data.pubdate)
+			.replace('{publisher}', data.publisher)
+			.replace('{width}', rating * 10)
+			.replace('{rating}', rating)
 
-		$( r_html.join('').replace('{stars}', (function(i) {
-			var _html = '', j = 5 - i;
-			while (i --) {
-				_html += '<li class="red j-png"></li>';
-			}
-			while (j --) {
-				_html += '<li class="j-png"></li>';
-			}
-			return _html;
-		})(Math.ceil(rating / 2))).replace('{rating}', rating) ).insertBefore($cnt);
-		$('.m-bookdata .data').height(82);
+		$body.append(html);
+
+		if (!data.pubdate) {
+			$('.duoban-sec .date').remove();
+		}
+		if (!data.publisher) {
+			$('.duoban-sec .pub').remove();
+		}
+
+		var $duobanSec = $('.duoban-sec'),
+			$close = $('.duoban-sec .close'),
+			$logo = $('.duoban-sec .logo'),
+			$cnt = $('.duoban-sec .cnt'),
+
+			w = $duobanSec.innerWidth() + 80,
+
+			fnAni = {
+				open: function() {
+					$logo.removeClass('green');
+					$duobanSec.animate({
+					    left: "10px"
+					}, 200);
+				},
+				hide: function() {
+					$duobanSec.animate({
+					    left: -w + "px"
+					}, 200);
+					$logo.addClass('green');
+				}
+			};
+
+		fnAni.open();
+
+		$close.on('click', fnAni.hide);
+
+		$logo.on('click', fnAni.open);
 	});
 
-})(window);
+})();

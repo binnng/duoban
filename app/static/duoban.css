@@ -1,4 +1,7 @@
-a{
+a,div,ul,li,p,u{
+	margin: 0;
+	padding: 0;
+	list-style: none;
 	text-decoration: none;
 }
 .duoban-popup{
@@ -28,7 +31,7 @@ a{
 .duoban-popup .home:hover{
 	color: #000;
 }
-
+/*
 .duoban-sec{
 	margin: 10px 0;
 	padding-bottom: 24px;
@@ -43,4 +46,102 @@ a{
 	display: inline-block;
 	font-size: 14px;
 	margin: 0 10px;
+}*/
+
+
+.duoban-sec{
+	position: fixed;
+	bottom: 10px;
+	left: 0;
+	height: 130px;
+	font-size: 14px;
+	color: #222;
+	text-align: left !important;
+	background: #fff;
+	border-radius: 2px;
 }
+.duoban-sec .logo{
+	font-size: 1em;
+	color: #999;
+	position: absolute;
+	top: -2em;
+	line-height: 2em;
+	left: -4px;
+	text-indent: 4px;
+}
+.duoban-sec .logo.green{
+	color: #fff;
+	background: #060;
+	padding: .5em;
+	left: 100%;
+	line-height: 1;
+	width: 3em;
+	text-align: center;
+	text-indent: 0;
+	bottom: 0;
+	top: auto;
+	cursor: pointer;
+}
+.duoban-sec img{
+	height: 94px;
+	float: left;
+	margin-right: 1.2em;
+}
+.duoban-sec .info{
+	float: left;
+	margin-right: 2em;
+}
+.duoban-sec .info li{
+	line-height: 1.4;
+}
+.duoban-sec a{
+	color: #111;
+}
+.duoban-sec a:hover{
+	color: #060;
+}
+
+.duoban-sec .book_rating .star{
+	display: inline-block;
+	height: 12px;
+	background: url(http://meiweidushu.duapp.com/static/img/star.png) repeat-x;
+	line-height: 0;
+	width: 65px;
+	background-position: 0 -14px;
+}
+.duoban-sec .book_rating .star b {
+	display: inline-block;
+	height: 12px;
+	background: url(http://meiweidushu.duapp.com/static/img/star.png) repeat-x;
+}
+
+.duoban-sec .link{
+	width: 6em;
+	float: left;
+}
+.duoban-sec .link a{
+	display: inline-block;
+	padding: 0.1em .5em;
+	border-left: 2px solid #060;
+	color: #222;
+	margin: .5em 0;
+}
+.duoban-sec .link a:hover{
+	background-color: #060;
+	color: #fff;
+}
+.duoban-sec .cnt{
+	position: relative;
+	overflow: hidden;
+	padding: 12px;
+	padding-right: 24px;
+}
+.duoban-sec .close{
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	font-style: normal;
+	cursor: pointer;
+	color: #aaa;
+}
+
