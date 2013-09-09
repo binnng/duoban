@@ -28,7 +28,7 @@
 			'</div>'
 		];
 
-	if (!id) return false;
+	if (!isbn) return false;
 
 	$.getJSON('https://api.douban.com/v2/book/isbn/' + isbn, function(data) {
 		id = data['id'];
@@ -63,6 +63,7 @@
 			fnAni = {
 				open: function() {
 					$logo.removeClass('green');
+					window.localStorage.setItem('duoban', '1');
 					$duobanSec.animate({
 					    left: "10px"
 					}, 200);
@@ -72,10 +73,15 @@
 					    left: -w + "px"
 					}, 200);
 					$logo.addClass('green');
+					window.localStorage.setItem('duoban', '0');
 				}
-			};
+			},
 
-		fnAni.open();
+			store = window.localStorage.getItem('duoban') || 1;
+
+		setTimeout(function() {
+			0 == store ? fnAni.hide() : fnAni.open();
+		}, 1000);
 
 		$close.on('click', fnAni.hide);
 

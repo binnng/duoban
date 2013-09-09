@@ -52,7 +52,7 @@ a,div,ul,li,p,u{
 .duoban-sec{
 	position: fixed;
 	bottom: 10px;
-	left: 0;
+	left: -100%;
 	height: 130px;
 	font-size: 14px;
 	color: #222;
