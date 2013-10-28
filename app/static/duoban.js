@@ -3,6 +3,7 @@
 		$body = $('body'),
 		id,
 		rating,
+		numRaters,
 
 		html = [
 			'<div class="duoban-sec">',
@@ -15,7 +16,7 @@
 					  	'<li class="pub">{publisher}</li>',
 					  	'<li class="date">{pubdate}</li>',
 					  	'<li class="book_rating small">',
-					  		'<span class="star"><b style="width: {width}%"></b></span><u>{rating}分</u>',
+					  		'<span class="star"><b style="width: {width}%"></b></span><u>{rating}分</u><span class="num_raters">{numRaters}人评分</span>',
 					  	'</li>',
 					'</ul>',
 					'<div class="link">',
@@ -33,6 +34,7 @@
 	$.getJSON('https://api.douban.com/v2/book/isbn/' + isbn, function(data) {
 		id = data['id'];
 		rating = data['rating']['average'];
+		numRaters = data['rating']['numRaters'];
 
 		html = html.join('').replace(/\{id\}/g, id)
 			.replace('{title}', data.title)
@@ -43,6 +45,7 @@
 			.replace('{publisher}', data.publisher)
 			.replace('{width}', rating * 10)
 			.replace('{rating}', rating)
+			.replace('{numRaters}', numRaters);
 
 		$body.append(html);
 

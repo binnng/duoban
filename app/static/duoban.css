@@ -71,7 +71,7 @@ a,div,ul,li,p,u{
 }
 .duoban-sec .logo.green{
 	color: #fff;
-	background: #060;
+	background: #f60;
 	padding: .5em;
 	left: 100%;
 	line-height: 1;
@@ -98,7 +98,7 @@ a,div,ul,li,p,u{
 	color: #111;
 }
 .duoban-sec a:hover{
-	color: #060;
+	color: #f60;
 }
 
 .duoban-sec .book_rating .star{
@@ -115,6 +115,12 @@ a,div,ul,li,p,u{
 	background: url(http://meiweidushu.duapp.com/static/img/star.png) repeat-x;
 }
 
+.duoban-sec .num_raters{
+	font-size: .9em;
+	padding-left: .5em;
+	color: #666;
+}
+
 .duoban-sec .link{
 	width: 6em;
 	float: left;
@@ -122,12 +128,12 @@ a,div,ul,li,p,u{
 .duoban-sec .link a{
 	display: inline-block;
 	padding: 0.1em .5em;
-	border-left: 2px solid #060;
+	border-left: 2px solid #f60;
 	color: #222;
 	margin: .5em 0;
 }
 .duoban-sec .link a:hover{
-	background-color: #060;
+	background-color: #f60;
 	color: #fff;
 }
 .duoban-sec .cnt{
