@@ -1,0 +1,23 @@
+{
+  "name": "duoban",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "b": "rm -rf dist && mkdir dist && ./node_modules/.bin/cssmin style.css > dist/style.css && node htmlmin.js && cp -r img dist/img && cp app.crx.zip dist/app.crx.zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/binnng/duoban.git"
+  },
+  "keywords": [],
+  "author": "binnng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binnng/duoban/issues"
+  },
+  "homepage": "https://github.com/binnng/duoban",
+  "devDependencies": {
+    "cssmin": "~0.4.3",
+    "html-minifier": "~0.7.0"
+  }
+}

@@ -12,4 +12,4 @@
 
 反正我用着挺爽的！
 
-[阅读介绍](http://binnng.github.io/duoban)
+[阅读介绍](http://binnng.github.io/duoban/dist/)
